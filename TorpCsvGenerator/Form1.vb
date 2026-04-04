@@ -3712,7 +3712,7 @@ Public Class TorpCsvGenerator
                         If(time.HasValue, time.Value, ""),
                         Nothing,
                         If(direction.HasValue, direction.Value, ""),
-                        Nothing,
+                        If(speed.HasValue, speed.Value, ""),
                         pattern,
                         pattern1,
                         pattern2,
