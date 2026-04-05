@@ -3665,8 +3665,8 @@ Public Class TorpCsvGenerator
 
                 Dim cols = lines(i).Split(vbTab)
 
-                ' 必要列数チェック（19列以上）
-                If cols.Length < 19 Then
+                ' 必要列数チェック（23列以上）
+                If cols.Length < 23 Then
                     errList.Add(MakeInfoText($"{i + 1}行目 列数が不足しています。", LogLevel.ERR))
                     Continue For
                 End If
