@@ -1,11 +1,13 @@
-# TorpCsvGenerator
+﻿# Scry1CsvGenerator
 
 ## 概要
 動画・音声に合わせて電動グッズの動作を制御する
 
 csvファイルを生成するWindowsアプリケーションです。
 
-!["TorpCsvGenerator"](/images/20260405_github_TCG.png)
+!["Scry1CsvGenerator"](/images/20260406_github_SCG.png)
+
+本ソフトは[TorpCsvGenerator](https://github.com/torpcsv/TorpCsvGenerator)からフォークされて作られました。制作者であるTorp様に感謝を捧げます。
 
 ## 動作環境
 - Windows 11
@@ -13,6 +15,9 @@ csvファイルを生成するWindowsアプリケーションです。
 
 ## インストール方法
 1. Releasesからダウンロード・解凍してexeを実行してください。
+
+## 使用ライブラリ
+[OxyPlot 2.2.0](https://github.com/oxyplot/oxyplot/releases/tag/v2.2.0)
 
 ## 依存関係
 本ソフトはMicrosoft Windowsに含まれるコンポーネント（Windows Media Player）を利用しています。
@@ -22,14 +27,4 @@ csvファイルを生成するWindowsアプリケーションです。
 
 ## 更新履歴
 
-2018年9月19日 v0.1 作成 fantiaで公開
-
-2018年12月24日 v0.2 作成 fantiaで公開
-
-2022年4月10日 v0.3 作成 fantiaで公開
-
-2026年1月27日 v0.4 作成、Ci-enで公開
-
-2026年2月22日 v0.4.1 作成、Ci-enで公開
-
-2026年4月5日 v1.0.0 公開
+2026年4月6日 v0.0.1 チャート表示を追加
