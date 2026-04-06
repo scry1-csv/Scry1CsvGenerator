@@ -7,3 +7,4 @@ obj/
 *.pdb
 *.cache
 .vs/
+packages/

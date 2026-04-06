@@ -118,7 +118,7 @@ Public Class PatternEditor
     Private Sub PatternEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'タイトル
-        Me.Text = TorpCsvGenerator.TITLEBAR_TAILTEXT
+        Me.Text = Scry1CsvGenerator.TITLEBAR_TAILTEXT
 
         'パターン一覧のロード
         If Not _editingPatternDataSet Is Nothing AndAlso

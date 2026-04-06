@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="TimesheetDefPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)"></Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="VideoPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)"></Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CaptureDelay" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>

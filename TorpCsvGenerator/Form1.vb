@@ -1,16 +1,21 @@
 ﻿
 Imports System.ComponentModel
 Imports System.IO
+Imports System.Runtime.Remoting.Contexts
 Imports System.Text
 Imports System.Xml
+Imports OxyPlot
+Imports OxyPlot.Series
+Imports OxyPlot.Axes
 
-Public Class TorpCsvGenerator
+
+Public Class Scry1CsvGenerator
 
 
 #Region "定数"
 
     'アプリケーション名、バージョン
-    Public Const TITLEBAR_TAILTEXT = "TorpCsvGenerator v1.0.0"
+    Public Const TITLEBAR_TAILTEXT = "Scry1CsvGenerator v0.0.1"
 
     Private Const COL_CHECK = "check"
     Private Const COL_VTIME = "vtime"
@@ -94,6 +99,8 @@ Public Class TorpCsvGenerator
 
     'パターン一覧
     Private _patternDataSet As DataSet
+
+    Private _IsLoading As Boolean = False
 
     'トラックバー値
     Private _pattern1_dspd0 As String
@@ -361,6 +368,11 @@ Public Class TorpCsvGenerator
         TextBoxLog.Text =
             MakeInfoText("時間キャプチャ　ディレイ時間：" & infoTextCaptureDelay, LogLevel.INFO)
 
+        Dim model As PlotModel = New PlotModel
+        model.Axes.Add(New LinearAxis With {.Position = AxisPosition.Left, .Minimum = -100, .Maximum = 100})
+        model.Axes.Add(New LinearAxis With {.Position = AxisPosition.Bottom})
+
+        OxyPlotView.Model = model
     End Sub
 
 
@@ -419,6 +431,7 @@ Public Class TorpCsvGenerator
             'メニューアクティブ更新
             UpdateMenuActivate()
 
+            SetPlot()
         End If
 
     End Sub
@@ -428,8 +441,8 @@ Public Class TorpCsvGenerator
     ''' </summary>
     ''' <param name="fileName"></param>
     Private Function LoadGeneratorFile(ByVal fileName As String) As Boolean
-
         Try
+            _IsLoading = True
 
             'xmlファイル読み込み
             Dim xmlDoc As XmlDocument = New XmlDocument
@@ -618,6 +631,7 @@ Public Class TorpCsvGenerator
 
             TextBoxLog.Text = MakeInfoText("タイムシート定義ファイルを開きました。" & "(" & DateTime.Now.ToString("HH:mm:ss") & ")", LogLevel.INFO)
 
+            _IsLoading = False
             Return True
 
         Catch ex As Exception
@@ -628,6 +642,7 @@ Public Class TorpCsvGenerator
             DataGridViewTimesheet.Rows.Clear()
             ClearPatternCombo()
 
+            _IsLoading = False
             Return False
 
         End Try
@@ -1390,27 +1405,15 @@ Public Class TorpCsvGenerator
     End Function
 
 
+    Private Function GenerateTimeSheetRowsFromDataGridView() As List(Of TimeSheetRow)
+        Dim rdmObj As New Random(Environment.TickCount)
 
-    ''' <summary>
-    ''' タイムシート生成
-    ''' </summary>
-    ''' <param name="fileName"></param>
-    Private Sub GenerateTimesheet(ByVal fileName As String)
-
-        Dim sWriter As StreamWriter
-        sWriter = New StreamWriter(fileName, False, System.Text.Encoding.UTF8)
-
-        '乱数生成
-        Dim rdmSeed As Integer = System.Environment.TickCount
-        Dim rdmObj As Random = New Random(rdmSeed)
-
-        Dim row As Integer
+        Dim result As New List(Of TimeSheetRow)
 
         Try
 
             For row = 0 To DataGridViewTimesheet.Rows.Count - 2
 
-                Dim csvtext As String = String.Empty
                 Dim time As Integer = CInt(DataGridViewTimesheet.Rows(row).Cells(COL_VTIME).Value)
 
                 Dim dir As Integer
@@ -1427,9 +1430,11 @@ Public Class TorpCsvGenerator
                     dir = CInt(DataGridViewTimesheet.Rows(row).Cells(COL_VDIR).Value)
                     spd = CInt(DataGridViewTimesheet.Rows(row).Cells(COL_VSPD).Value)
 
-                    csvtext = time & "," & dir & "," & spd
-                    sWriter.Write(csvtext)
-                    sWriter.Write(vbCrLf)
+                    result.Add(New TimeSheetRow With {
+                    .Time = time,
+                    .Dir = dir,
+                    .Spd = spd
+                })
 
                     Continue For
 
@@ -1437,7 +1442,7 @@ Public Class TorpCsvGenerator
 
                     Dim nextTime As Integer
                     Dim reachedEndTime As Boolean = False
-                    Dim selectedPattern As String = String.Empty
+                    Dim selectedPattern As String
                     Dim selectedPatternNumber As Integer = 0
                     Dim lastPatternNumber As Integer = 0
 
@@ -1453,16 +1458,18 @@ Public Class TorpCsvGenerator
                             selectedPattern = GetRandomPatterns(row, rdmObj, selectedPatternNumber)
                         End If
 
-                        reachedEndTime = WriteCsvWithPattern(row, selectedPattern, time, nextTime, sWriter, selectedPatternNumber)
+                        Dim r = GenerateTimeSheetRowsWithPattern(row, selectedPattern, time, nextTime, selectedPatternNumber)
+                        result.AddRange(r.Item1)
+                        reachedEndTime = r.Item2
 
                         If reachedEndTime = True Then
                             Exit Do
                         End If
 
                         If useitv = True Then
-
-                            reachedEndTime = WriteCsvWithInterval(row, rdmObj, time, nextTime, sWriter)
-
+                            Dim r2 = GenerateTimeSheetRowsWithInterval(row, rdmObj, time, nextTime)
+                            result.AddRange(r2.Item1)
+                            reachedEndTime = r2.Item2
                         End If
 
                     Loop
@@ -1471,20 +1478,29 @@ Public Class TorpCsvGenerator
 
             Next
 
-            TextBoxLog.Text = MakeInfoText("CSVの出力が正常に終了しました。" & "(" & DateTime.Now.ToString("HH:mm:ss") & ")", LogLevel.INFO)
 
-
-        Catch ex As Exception
-
-            TextBoxLog.Text = MakeInfoText("CSV出力中に不測エラーが発生しました。DataGrid行： " & (row + 1).ToString, LogLevel.FATAL)
-
-        Finally
-
-            sWriter.Close()
-            sWriter.Dispose()
-
+            Return result
+        Catch ex As OutOfMemoryException
+            TextBoxLog.Text = "TimeSheetRowsの生成に失敗しました。"
+            Return Nothing
         End Try
 
+    End Function
+
+    ''' <summary>
+    ''' タイムシート生成
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Private Sub GenerateTimesheet(ByVal fileName As String)
+        Dim timeSheetRows = GenerateTimeSheetRowsFromDataGridView()
+
+        Dim sb = New StringBuilder
+
+        For Each row As TimeSheetRow In timeSheetRows
+            sb.AppendLine(row.ToCsvLine)
+        Next
+
+        File.WriteAllText(fileName, sb.ToString(), System.Text.Encoding.UTF8)
     End Sub
 
     Private Function GetNextPattern(ByVal row As Integer,
@@ -1642,14 +1658,13 @@ Public Class TorpCsvGenerator
 
 
 
-    Private Function WriteCsvWithPattern(ByVal row As Integer,
+    Private Function GenerateTimeSheetRowsWithPattern(ByVal row As Integer,
                                          ByVal patternName As String,
                                          ByRef time As Integer,
                                          ByVal nextTime As Integer,
-                                         ByVal sWriter As StreamWriter,
-                                         ByVal patternNumber As Integer) As Boolean
+                                         ByVal patternNumber As Integer) As Tuple(Of List(Of TimeSheetRow), Boolean)
 
-        Dim csvtext As String
+        Dim result As New List(Of TimeSheetRow)
         Dim baseTime As Integer = time
         Dim dspd As Integer = GetDspd(row, patternNumber) '補正速度
         Dim patternDataTable As DataTable = _patternDataSet.Tables(patternName)
@@ -1663,7 +1678,7 @@ Public Class TorpCsvGenerator
 
 
             If time >= endTime Then
-                Return True
+                Return Tuple.Create(result, True)
             End If
 
             Dim dir As Integer = CInt(patternDataTable.Rows(i).Item(COL_VDIR))
@@ -1679,31 +1694,33 @@ Public Class TorpCsvGenerator
                 End If
             End If
 
-            csvtext = time & "," & dir & "," & spd
-            sWriter.Write(csvtext)
-            sWriter.Write(vbCrLf)
-
+            result.Add(New TimeSheetRow With {
+                .Time = time,
+                .Dir = dir,
+                .Spd = spd
+            })
         Next
 
         time = baseTime + CInt(patternDataTable.Rows(patternDataTable.Rows.Count - 1).Item(COL_VTIME))
         If time >= endTime Then
-            Return True
+            Return Tuple.Create(result, True)
         End If
-        Return False
+        Return Tuple.Create(result, False)
 
     End Function
 
 
-    Private Function WriteCsvWithInterval(ByVal row As Integer,
+    Private Function GenerateTimeSheetRowsWithInterval(ByVal row As Integer,
                                           ByRef rdmObj As Random,
                                           ByRef Time As Integer,
-                                          ByVal nextTime As Integer,
-                                          ByVal sWriter As StreamWriter) As Boolean
+                                          ByVal nextTime As Integer) As Tuple(Of List(Of TimeSheetRow), Boolean)
 
         Dim itvminValue As String = CType(DataGridViewTimesheet.Rows(row).Cells(COL_ITVMIN).Value, Integer)
         Dim itvmaxValue As String = CType(DataGridViewTimesheet.Rows(row).Cells(COL_ITVMAX).Value, Integer)
         Dim itvminStr As String = String.Empty
         Dim itvmaxStr As String = String.Empty
+
+        Dim result As New List(Of TimeSheetRow)
 
         Select Case itvminValue
             Case 0
@@ -1815,26 +1832,25 @@ Public Class TorpCsvGenerator
 
         '0秒のインターバルタイムが指定された場合、CSVを記述しない
         If itvTime = 0 Then
-            Return False
+            Return Tuple.Create(Of List(Of TimeSheetRow), Boolean)(Nothing, False)
         End If
 
-        Dim csvtext As String
-
-        csvtext = Time & ",0,0"
-        sWriter.Write(csvtext)
-        sWriter.Write(vbCrLf)
+        result.Add(New TimeSheetRow With {
+            .Time = Time,
+            .Dir = False,
+            .Spd = 0
+        })
 
         '「次の行の時間 - 0.1秒」以上ならば、CSV行を記述しない
         Dim endTime As Integer = nextTime - 1
 
         Time = Time + itvTime
         If Time > endTime Then
-            Return True
+            Return Tuple.Create(result, True)
         End If
-        Return False
+        Return Tuple.Create(result, False)
 
     End Function
-
 
     Private Function GetDspd(ByVal Row As Integer,
                              ByVal patternNumber As Integer) As Integer
@@ -3817,5 +3833,57 @@ Public Class TorpCsvGenerator
         Return result
     End Function
 
+    Private Sub DataGridViewTimesheet_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewTimesheet.CellValueChanged
+        If OxyPlotView.Model Is Nothing Then
+            Return
+        End If
+        If _IsLoading Then
+            Return
+        End If
+
+        SetPlot()
+    End Sub
+
+    Private Sub SetPlot()
+        Dim model As New PlotModel
+        model.Axes.Add(New LinearAxis With {
+                       .Position = AxisPosition.Left,
+                       .Minimum = -100,
+                       .Maximum = 100,
+                       .AbsoluteMinimum = -100,
+                       .AbsoluteMaximum = 100,
+                       .MajorGridlineColor = OxyColors.Silver,
+                       .MajorGridlineStyle = LineStyle.Solid,
+                       .MinorGridlineColor = OxyColors.Silver,
+                       .MinorGridlineStyle = LineStyle.Dot,
+                       .IsZoomEnabled = False
+        })
+        model.Axes.Add(New LinearAxis With {.Position = AxisPosition.Bottom, .AbsoluteMinimum = 0})
+
+        Dim timeSheet = GenerateTimeSheetRowsFromDataGridView()
+        If timeSheet Is Nothing Then
+            Return
+        End If
+
+        Dim series = New LineSeries
+        series.Points.Add(New DataPoint(0, 0))
+        Dim prevSpd As Integer = 0
+
+        For Each row In timeSheet
+            Dim spd As Integer
+            If row.Dir = True Then
+                spd = row.Spd
+            Else
+                spd = -row.Spd
+            End If
+
+            series.Points.Add(New DataPoint(row.Time, prevSpd))
+            series.Points.Add(New DataPoint(row.Time, spd))
+            prevSpd = spd
+        Next
+
+        model.Series.Add(series)
+        OxyPlotView.Model = model
+    End Sub
 End Class
 

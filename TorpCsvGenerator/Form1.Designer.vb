@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class TorpCsvGenerator
+Partial Class Scry1CsvGenerator
     Inherits System.Windows.Forms.Form
 
     'フォームがコンポーネントの一覧をクリーンアップするために dispose をオーバーライドします。
@@ -33,8 +33,31 @@ Partial Class TorpCsvGenerator
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TorpCsvGenerator))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Scry1CsvGenerator))
         Me.DataGridViewTimesheet = New System.Windows.Forms.DataGridView()
+        Me.vtimehms = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.vtime = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.vtimediff = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.vdir = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.vspd = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.check = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.patn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.patn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.patn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.patn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.vcmt = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dspd1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dspd2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dspd3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dspd4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.rate1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.rate2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.rate3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.rate4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.userdm = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.useitv = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.itvmin = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.itvmax = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ButtonPatternSetting = New System.Windows.Forms.Button()
         Me.CheckBoxUsePattern = New System.Windows.Forms.CheckBox()
         Me.ComboBoxPattern1 = New System.Windows.Forms.ComboBox()
@@ -121,29 +144,7 @@ Partial Class TorpCsvGenerator
         Me.LabelMaxTime = New System.Windows.Forms.Label()
         Me.LabelSec1 = New System.Windows.Forms.Label()
         Me.LabelSec2 = New System.Windows.Forms.Label()
-        Me.vtimehms = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.vtime = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.vtimediff = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.vdir = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.vspd = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.check = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.patn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.patn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.patn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.patn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.vcmt = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dspd1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dspd2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dspd3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dspd4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.rate1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.rate2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.rate3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.rate4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.userdm = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.useitv = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.itvmin = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.itvmax = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OxyPlotView = New OxyPlot.WindowsForms.PlotView()
         CType(Me.DataGridViewTimesheet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TrackBarPattern1dspd, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TrackBarPattern1rate, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -164,15 +165,263 @@ Partial Class TorpCsvGenerator
         Me.DataGridViewTimesheet.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataGridViewTimesheet.ColumnHeadersHeight = 58
         Me.DataGridViewTimesheet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridViewTimesheet.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.vtimehms, Me.vtime, Me.vtimediff, Me.vdir, Me.vspd, Me.check, Me.patn1, Me.patn2, Me.patn3, Me.patn4, Me.vcmt, Me.dspd1, Me.dspd2, Me.dspd3, Me.dspd4, Me.rate1, Me.rate2, Me.rate3, Me.rate4, Me.userdm, Me.useitv, Me.itvmin, Me.itvmax})
         Me.DataGridViewTimesheet.Location = New System.Drawing.Point(13, 33)
         Me.DataGridViewTimesheet.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridViewTimesheet.MultiSelect = False
         Me.DataGridViewTimesheet.Name = "DataGridViewTimesheet"
+        Me.DataGridViewTimesheet.RowHeadersWidth = 102
         Me.DataGridViewTimesheet.RowTemplate.Height = 21
-        Me.DataGridViewTimesheet.Size = New System.Drawing.Size(880, 557)
+        Me.DataGridViewTimesheet.Size = New System.Drawing.Size(880, 714)
         Me.DataGridViewTimesheet.TabIndex = 0
+        '
+        'vtimehms
+        '
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS UI Gothic", 9.0!)
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.vtimehms.DefaultCellStyle = DataGridViewCellStyle1
+        Me.vtimehms.Frozen = True
+        Me.vtimehms.HeaderText = ""
+        Me.vtimehms.MinimumWidth = 12
+        Me.vtimehms.Name = "vtimehms"
+        Me.vtimehms.ReadOnly = True
+        Me.vtimehms.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.vtimehms.Width = 60
+        '
+        'vtime
+        '
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.vtime.DefaultCellStyle = DataGridViewCellStyle2
+        Me.vtime.Frozen = True
+        Me.vtime.HeaderText = "時間"
+        Me.vtime.MaxInputLength = 6
+        Me.vtime.MinimumWidth = 12
+        Me.vtime.Name = "vtime"
+        Me.vtime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.vtime.ToolTipText = "時間 [10=1秒]"
+        Me.vtime.Width = 65
+        '
+        'vtimediff
+        '
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        Me.vtimediff.DefaultCellStyle = DataGridViewCellStyle3
+        Me.vtimediff.Frozen = True
+        Me.vtimediff.HeaderText = "動作時間"
+        Me.vtimediff.MinimumWidth = 12
+        Me.vtimediff.Name = "vtimediff"
+        Me.vtimediff.ReadOnly = True
+        Me.vtimediff.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.vtimediff.ToolTipText = "差[10=1秒]"
+        Me.vtimediff.Width = 80
+        '
+        'vdir
+        '
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.vdir.DefaultCellStyle = DataGridViewCellStyle4
+        Me.vdir.Frozen = True
+        Me.vdir.HeaderText = "方向"
+        Me.vdir.MaxInputLength = 1
+        Me.vdir.MinimumWidth = 12
+        Me.vdir.Name = "vdir"
+        Me.vdir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.vdir.ToolTipText = "回転方向 [0=右回転, 1=左回転]"
+        Me.vdir.Width = 65
+        '
+        'vspd
+        '
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.vspd.DefaultCellStyle = DataGridViewCellStyle5
+        Me.vspd.Frozen = True
+        Me.vspd.HeaderText = "速度"
+        Me.vspd.MaxInputLength = 3
+        Me.vspd.MinimumWidth = 12
+        Me.vspd.Name = "vspd"
+        Me.vspd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.vspd.ToolTipText = "回転速度 [推奨値・・・A10サイクロンSA：40以上　U.F.O.SA：25以上]"
+        Me.vspd.Width = 65
+        '
+        'check
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("MS UI Gothic", 9.0!)
+        DataGridViewCellStyle6.NullValue = False
+        Me.check.DefaultCellStyle = DataGridViewCellStyle6
+        Me.check.Frozen = True
+        Me.check.HeaderText = "パターン"
+        Me.check.MinimumWidth = 12
+        Me.check.Name = "check"
+        Me.check.Width = 65
+        '
+        'patn1
+        '
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.patn1.DefaultCellStyle = DataGridViewCellStyle7
+        Me.patn1.HeaderText = "パターン1"
+        Me.patn1.MaxInputLength = 100
+        Me.patn1.MinimumWidth = 12
+        Me.patn1.Name = "patn1"
+        Me.patn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.patn1.Width = 80
+        '
+        'patn2
+        '
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.patn2.DefaultCellStyle = DataGridViewCellStyle8
+        Me.patn2.HeaderText = "パターン2"
+        Me.patn2.MaxInputLength = 100
+        Me.patn2.MinimumWidth = 12
+        Me.patn2.Name = "patn2"
+        Me.patn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.patn2.Width = 80
+        '
+        'patn3
+        '
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.patn3.DefaultCellStyle = DataGridViewCellStyle9
+        Me.patn3.HeaderText = "パターン3"
+        Me.patn3.MaxInputLength = 100
+        Me.patn3.MinimumWidth = 12
+        Me.patn3.Name = "patn3"
+        Me.patn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.patn3.Width = 80
+        '
+        'patn4
+        '
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.patn4.DefaultCellStyle = DataGridViewCellStyle10
+        Me.patn4.HeaderText = "パターン4"
+        Me.patn4.MaxInputLength = 100
+        Me.patn4.MinimumWidth = 12
+        Me.patn4.Name = "patn4"
+        Me.patn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.patn4.Width = 80
+        '
+        'vcmt
+        '
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.vcmt.DefaultCellStyle = DataGridViewCellStyle11
+        Me.vcmt.HeaderText = "コメント"
+        Me.vcmt.MaxInputLength = 100
+        Me.vcmt.MinimumWidth = 12
+        Me.vcmt.Name = "vcmt"
+        Me.vcmt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.vcmt.Width = 285
+        '
+        'dspd1
+        '
+        Me.dspd1.HeaderText = "dspd1"
+        Me.dspd1.MaxInputLength = 3
+        Me.dspd1.MinimumWidth = 12
+        Me.dspd1.Name = "dspd1"
+        Me.dspd1.Visible = False
+        Me.dspd1.Width = 20
+        '
+        'dspd2
+        '
+        Me.dspd2.HeaderText = "dspd2"
+        Me.dspd2.MaxInputLength = 3
+        Me.dspd2.MinimumWidth = 12
+        Me.dspd2.Name = "dspd2"
+        Me.dspd2.Visible = False
+        Me.dspd2.Width = 20
+        '
+        'dspd3
+        '
+        Me.dspd3.HeaderText = "dspd3"
+        Me.dspd3.MaxInputLength = 3
+        Me.dspd3.MinimumWidth = 12
+        Me.dspd3.Name = "dspd3"
+        Me.dspd3.Visible = False
+        Me.dspd3.Width = 20
+        '
+        'dspd4
+        '
+        Me.dspd4.HeaderText = "dspd4"
+        Me.dspd4.MaxInputLength = 3
+        Me.dspd4.MinimumWidth = 12
+        Me.dspd4.Name = "dspd4"
+        Me.dspd4.Visible = False
+        Me.dspd4.Width = 20
+        '
+        'rate1
+        '
+        Me.rate1.HeaderText = "rate1"
+        Me.rate1.MaxInputLength = 1
+        Me.rate1.MinimumWidth = 12
+        Me.rate1.Name = "rate1"
+        Me.rate1.Visible = False
+        Me.rate1.Width = 20
+        '
+        'rate2
+        '
+        Me.rate2.HeaderText = "rate2"
+        Me.rate2.MaxInputLength = 1
+        Me.rate2.MinimumWidth = 12
+        Me.rate2.Name = "rate2"
+        Me.rate2.Visible = False
+        Me.rate2.Width = 20
+        '
+        'rate3
+        '
+        Me.rate3.HeaderText = "rate3"
+        Me.rate3.MaxInputLength = 1
+        Me.rate3.MinimumWidth = 12
+        Me.rate3.Name = "rate3"
+        Me.rate3.Visible = False
+        Me.rate3.Width = 20
+        '
+        'rate4
+        '
+        Me.rate4.HeaderText = "rate4"
+        Me.rate4.MaxInputLength = 1
+        Me.rate4.MinimumWidth = 12
+        Me.rate4.Name = "rate4"
+        Me.rate4.Visible = False
+        Me.rate4.Width = 20
+        '
+        'userdm
+        '
+        Me.userdm.HeaderText = "userdm"
+        Me.userdm.MinimumWidth = 12
+        Me.userdm.Name = "userdm"
+        Me.userdm.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.userdm.Visible = False
+        Me.userdm.Width = 20
+        '
+        'useitv
+        '
+        Me.useitv.HeaderText = "useitv"
+        Me.useitv.MinimumWidth = 12
+        Me.useitv.Name = "useitv"
+        Me.useitv.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.useitv.Visible = False
+        Me.useitv.Width = 20
+        '
+        'itvmin
+        '
+        Me.itvmin.HeaderText = "itvmin"
+        Me.itvmin.MaxInputLength = 4
+        Me.itvmin.MinimumWidth = 12
+        Me.itvmin.Name = "itvmin"
+        Me.itvmin.Visible = False
+        Me.itvmin.Width = 20
+        '
+        'itvmax
+        '
+        Me.itvmax.HeaderText = "itvmax"
+        Me.itvmax.MaxInputLength = 4
+        Me.itvmax.MinimumWidth = 12
+        Me.itvmax.Name = "itvmax"
+        Me.itvmax.Visible = False
+        Me.itvmax.Width = 20
         '
         'ButtonPatternSetting
         '
@@ -191,10 +440,10 @@ Partial Class TorpCsvGenerator
         Me.CheckBoxUsePattern.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBoxUsePattern.AutoSize = True
         Me.CheckBoxUsePattern.Font = New System.Drawing.Font("MS UI Gothic", 12.0!)
-        Me.CheckBoxUsePattern.Location = New System.Drawing.Point(913, 95)
+        Me.CheckBoxUsePattern.Location = New System.Drawing.Point(705, 95)
         Me.CheckBoxUsePattern.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBoxUsePattern.Name = "CheckBoxUsePattern"
-        Me.CheckBoxUsePattern.Size = New System.Drawing.Size(145, 20)
+        Me.CheckBoxUsePattern.Size = New System.Drawing.Size(353, 44)
         Me.CheckBoxUsePattern.TabIndex = 2
         Me.CheckBoxUsePattern.Text = "パターンを使用する"
         Me.CheckBoxUsePattern.UseVisualStyleBackColor = True
@@ -208,7 +457,7 @@ Partial Class TorpCsvGenerator
         Me.ComboBoxPattern1.Location = New System.Drawing.Point(932, 123)
         Me.ComboBoxPattern1.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxPattern1.Name = "ComboBoxPattern1"
-        Me.ComboBoxPattern1.Size = New System.Drawing.Size(204, 24)
+        Me.ComboBoxPattern1.Size = New System.Drawing.Size(204, 48)
         Me.ComboBoxPattern1.TabIndex = 3
         '
         'TrackBarPattern1dspd
@@ -218,7 +467,7 @@ Partial Class TorpCsvGenerator
         Me.TrackBarPattern1dspd.Margin = New System.Windows.Forms.Padding(4)
         Me.TrackBarPattern1dspd.Maximum = 8
         Me.TrackBarPattern1dspd.Name = "TrackBarPattern1dspd"
-        Me.TrackBarPattern1dspd.Size = New System.Drawing.Size(136, 45)
+        Me.TrackBarPattern1dspd.Size = New System.Drawing.Size(136, 114)
         Me.TrackBarPattern1dspd.TabIndex = 4
         Me.TrackBarPattern1dspd.Value = 4
         '
@@ -229,7 +478,7 @@ Partial Class TorpCsvGenerator
         Me.TrackBarPattern1rate.Margin = New System.Windows.Forms.Padding(4)
         Me.TrackBarPattern1rate.Maximum = 4
         Me.TrackBarPattern1rate.Name = "TrackBarPattern1rate"
-        Me.TrackBarPattern1rate.Size = New System.Drawing.Size(80, 45)
+        Me.TrackBarPattern1rate.Size = New System.Drawing.Size(80, 114)
         Me.TrackBarPattern1rate.TabIndex = 5
         Me.TrackBarPattern1rate.Value = 1
         '
@@ -240,7 +489,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern1dspd.Location = New System.Drawing.Point(1144, 127)
         Me.LabelPattern1dspd.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern1dspd.Name = "LabelPattern1dspd"
-        Me.LabelPattern1dspd.Size = New System.Drawing.Size(46, 16)
+        Me.LabelPattern1dspd.Size = New System.Drawing.Size(115, 40)
         Me.LabelPattern1dspd.TabIndex = 6
         Me.LabelPattern1dspd.Text = "dspd1"
         Me.LabelPattern1dspd.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -252,7 +501,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern1rate.Location = New System.Drawing.Point(1321, 127)
         Me.LabelPattern1rate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern1rate.Name = "LabelPattern1rate"
-        Me.LabelPattern1rate.Size = New System.Drawing.Size(43, 16)
+        Me.LabelPattern1rate.Size = New System.Drawing.Size(104, 40)
         Me.LabelPattern1rate.TabIndex = 7
         Me.LabelPattern1rate.Text = "rate1"
         Me.LabelPattern1rate.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -264,7 +513,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPatternDetail.Location = New System.Drawing.Point(1169, 99)
         Me.LabelPatternDetail.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPatternDetail.Name = "LabelPatternDetail"
-        Me.LabelPatternDetail.Size = New System.Drawing.Size(234, 16)
+        Me.LabelPatternDetail.Size = New System.Drawing.Size(580, 40)
         Me.LabelPatternDetail.TabIndex = 8
         Me.LabelPatternDetail.Text = "速度補正　　　　　　　　　実行比率"
         '
@@ -275,7 +524,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern1.Location = New System.Drawing.Point(915, 127)
         Me.LabelPattern1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern1.Name = "LabelPattern1"
-        Me.LabelPattern1.Size = New System.Drawing.Size(15, 16)
+        Me.LabelPattern1.Size = New System.Drawing.Size(37, 40)
         Me.LabelPattern1.TabIndex = 9
         Me.LabelPattern1.Text = "1"
         '
@@ -286,7 +535,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern2.Location = New System.Drawing.Point(915, 169)
         Me.LabelPattern2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern2.Name = "LabelPattern2"
-        Me.LabelPattern2.Size = New System.Drawing.Size(15, 16)
+        Me.LabelPattern2.Size = New System.Drawing.Size(37, 40)
         Me.LabelPattern2.TabIndex = 15
         Me.LabelPattern2.Text = "2"
         '
@@ -297,7 +546,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern2rate.Location = New System.Drawing.Point(1321, 170)
         Me.LabelPattern2rate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern2rate.Name = "LabelPattern2rate"
-        Me.LabelPattern2rate.Size = New System.Drawing.Size(43, 16)
+        Me.LabelPattern2rate.Size = New System.Drawing.Size(104, 40)
         Me.LabelPattern2rate.TabIndex = 14
         Me.LabelPattern2rate.Text = "rate2"
         Me.LabelPattern2rate.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -309,7 +558,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern2dspd.Location = New System.Drawing.Point(1144, 170)
         Me.LabelPattern2dspd.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern2dspd.Name = "LabelPattern2dspd"
-        Me.LabelPattern2dspd.Size = New System.Drawing.Size(46, 16)
+        Me.LabelPattern2dspd.Size = New System.Drawing.Size(115, 40)
         Me.LabelPattern2dspd.TabIndex = 13
         Me.LabelPattern2dspd.Text = "dspd2"
         Me.LabelPattern2dspd.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -321,7 +570,7 @@ Partial Class TorpCsvGenerator
         Me.TrackBarPattern2rate.Margin = New System.Windows.Forms.Padding(4)
         Me.TrackBarPattern2rate.Maximum = 4
         Me.TrackBarPattern2rate.Name = "TrackBarPattern2rate"
-        Me.TrackBarPattern2rate.Size = New System.Drawing.Size(80, 45)
+        Me.TrackBarPattern2rate.Size = New System.Drawing.Size(80, 114)
         Me.TrackBarPattern2rate.TabIndex = 12
         Me.TrackBarPattern2rate.Value = 1
         '
@@ -332,7 +581,7 @@ Partial Class TorpCsvGenerator
         Me.TrackBarPattern2dspd.Margin = New System.Windows.Forms.Padding(4)
         Me.TrackBarPattern2dspd.Maximum = 8
         Me.TrackBarPattern2dspd.Name = "TrackBarPattern2dspd"
-        Me.TrackBarPattern2dspd.Size = New System.Drawing.Size(136, 45)
+        Me.TrackBarPattern2dspd.Size = New System.Drawing.Size(136, 114)
         Me.TrackBarPattern2dspd.TabIndex = 11
         Me.TrackBarPattern2dspd.Value = 4
         '
@@ -344,7 +593,7 @@ Partial Class TorpCsvGenerator
         Me.ComboBoxPattern2.Location = New System.Drawing.Point(932, 166)
         Me.ComboBoxPattern2.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxPattern2.Name = "ComboBoxPattern2"
-        Me.ComboBoxPattern2.Size = New System.Drawing.Size(204, 24)
+        Me.ComboBoxPattern2.Size = New System.Drawing.Size(204, 48)
         Me.ComboBoxPattern2.TabIndex = 10
         '
         'LabelPattern3
@@ -354,7 +603,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern3.Location = New System.Drawing.Point(915, 212)
         Me.LabelPattern3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern3.Name = "LabelPattern3"
-        Me.LabelPattern3.Size = New System.Drawing.Size(15, 16)
+        Me.LabelPattern3.Size = New System.Drawing.Size(37, 40)
         Me.LabelPattern3.TabIndex = 16
         Me.LabelPattern3.Text = "3"
         '
@@ -365,7 +614,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern4.Location = New System.Drawing.Point(915, 254)
         Me.LabelPattern4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern4.Name = "LabelPattern4"
-        Me.LabelPattern4.Size = New System.Drawing.Size(15, 16)
+        Me.LabelPattern4.Size = New System.Drawing.Size(37, 40)
         Me.LabelPattern4.TabIndex = 17
         Me.LabelPattern4.Text = "4"
         '
@@ -376,7 +625,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern3rate.Location = New System.Drawing.Point(1321, 213)
         Me.LabelPattern3rate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern3rate.Name = "LabelPattern3rate"
-        Me.LabelPattern3rate.Size = New System.Drawing.Size(43, 16)
+        Me.LabelPattern3rate.Size = New System.Drawing.Size(104, 40)
         Me.LabelPattern3rate.TabIndex = 22
         Me.LabelPattern3rate.Text = "rate3"
         Me.LabelPattern3rate.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -388,7 +637,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern3dspd.Location = New System.Drawing.Point(1144, 213)
         Me.LabelPattern3dspd.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern3dspd.Name = "LabelPattern3dspd"
-        Me.LabelPattern3dspd.Size = New System.Drawing.Size(46, 16)
+        Me.LabelPattern3dspd.Size = New System.Drawing.Size(115, 40)
         Me.LabelPattern3dspd.TabIndex = 21
         Me.LabelPattern3dspd.Text = "dspd3"
         Me.LabelPattern3dspd.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -400,7 +649,7 @@ Partial Class TorpCsvGenerator
         Me.TrackBarPattern3rate.Margin = New System.Windows.Forms.Padding(4)
         Me.TrackBarPattern3rate.Maximum = 4
         Me.TrackBarPattern3rate.Name = "TrackBarPattern3rate"
-        Me.TrackBarPattern3rate.Size = New System.Drawing.Size(80, 45)
+        Me.TrackBarPattern3rate.Size = New System.Drawing.Size(80, 114)
         Me.TrackBarPattern3rate.TabIndex = 20
         Me.TrackBarPattern3rate.Value = 1
         '
@@ -411,7 +660,7 @@ Partial Class TorpCsvGenerator
         Me.TrackBarPattern3dspd.Margin = New System.Windows.Forms.Padding(4)
         Me.TrackBarPattern3dspd.Maximum = 8
         Me.TrackBarPattern3dspd.Name = "TrackBarPattern3dspd"
-        Me.TrackBarPattern3dspd.Size = New System.Drawing.Size(136, 45)
+        Me.TrackBarPattern3dspd.Size = New System.Drawing.Size(136, 114)
         Me.TrackBarPattern3dspd.TabIndex = 19
         Me.TrackBarPattern3dspd.Value = 4
         '
@@ -423,7 +672,7 @@ Partial Class TorpCsvGenerator
         Me.ComboBoxPattern3.Location = New System.Drawing.Point(932, 209)
         Me.ComboBoxPattern3.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxPattern3.Name = "ComboBoxPattern3"
-        Me.ComboBoxPattern3.Size = New System.Drawing.Size(204, 24)
+        Me.ComboBoxPattern3.Size = New System.Drawing.Size(204, 48)
         Me.ComboBoxPattern3.TabIndex = 18
         '
         'LabelPattern4rate
@@ -433,7 +682,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern4rate.Location = New System.Drawing.Point(1321, 255)
         Me.LabelPattern4rate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern4rate.Name = "LabelPattern4rate"
-        Me.LabelPattern4rate.Size = New System.Drawing.Size(43, 16)
+        Me.LabelPattern4rate.Size = New System.Drawing.Size(104, 40)
         Me.LabelPattern4rate.TabIndex = 27
         Me.LabelPattern4rate.Text = "rate4"
         Me.LabelPattern4rate.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -445,7 +694,7 @@ Partial Class TorpCsvGenerator
         Me.LabelPattern4dspd.Location = New System.Drawing.Point(1144, 255)
         Me.LabelPattern4dspd.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelPattern4dspd.Name = "LabelPattern4dspd"
-        Me.LabelPattern4dspd.Size = New System.Drawing.Size(46, 16)
+        Me.LabelPattern4dspd.Size = New System.Drawing.Size(115, 40)
         Me.LabelPattern4dspd.TabIndex = 26
         Me.LabelPattern4dspd.Text = "dspd4"
         Me.LabelPattern4dspd.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -457,7 +706,7 @@ Partial Class TorpCsvGenerator
         Me.TrackBarPattern4rate.Margin = New System.Windows.Forms.Padding(4)
         Me.TrackBarPattern4rate.Maximum = 4
         Me.TrackBarPattern4rate.Name = "TrackBarPattern4rate"
-        Me.TrackBarPattern4rate.Size = New System.Drawing.Size(80, 45)
+        Me.TrackBarPattern4rate.Size = New System.Drawing.Size(80, 114)
         Me.TrackBarPattern4rate.TabIndex = 25
         Me.TrackBarPattern4rate.Value = 1
         '
@@ -468,7 +717,7 @@ Partial Class TorpCsvGenerator
         Me.TrackBarPattern4dspd.Margin = New System.Windows.Forms.Padding(4)
         Me.TrackBarPattern4dspd.Maximum = 8
         Me.TrackBarPattern4dspd.Name = "TrackBarPattern4dspd"
-        Me.TrackBarPattern4dspd.Size = New System.Drawing.Size(136, 45)
+        Me.TrackBarPattern4dspd.Size = New System.Drawing.Size(136, 114)
         Me.TrackBarPattern4dspd.TabIndex = 24
         Me.TrackBarPattern4dspd.Value = 4
         '
@@ -480,7 +729,7 @@ Partial Class TorpCsvGenerator
         Me.ComboBoxPattern4.Location = New System.Drawing.Point(932, 251)
         Me.ComboBoxPattern4.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxPattern4.Name = "ComboBoxPattern4"
-        Me.ComboBoxPattern4.Size = New System.Drawing.Size(204, 24)
+        Me.ComboBoxPattern4.Size = New System.Drawing.Size(204, 48)
         Me.ComboBoxPattern4.TabIndex = 23
         '
         'LabelMode
@@ -490,7 +739,7 @@ Partial Class TorpCsvGenerator
         Me.LabelMode.Location = New System.Drawing.Point(929, 293)
         Me.LabelMode.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelMode.Name = "LabelMode"
-        Me.LabelMode.Size = New System.Drawing.Size(76, 16)
+        Me.LabelMode.Size = New System.Drawing.Size(189, 40)
         Me.LabelMode.TabIndex = 28
         Me.LabelMode.Text = "実行モード"
         '
@@ -499,9 +748,9 @@ Partial Class TorpCsvGenerator
         Me.RadioButtonOrder.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButtonOrder.AutoSize = True
         Me.RadioButtonOrder.Checked = True
-        Me.RadioButtonOrder.Location = New System.Drawing.Point(1013, 291)
+        Me.RadioButtonOrder.Location = New System.Drawing.Point(899, 291)
         Me.RadioButtonOrder.Name = "RadioButtonOrder"
-        Me.RadioButtonOrder.Size = New System.Drawing.Size(81, 20)
+        Me.RadioButtonOrder.Size = New System.Drawing.Size(195, 44)
         Me.RadioButtonOrder.TabIndex = 29
         Me.RadioButtonOrder.TabStop = True
         Me.RadioButtonOrder.Text = "上から順"
@@ -511,9 +760,9 @@ Partial Class TorpCsvGenerator
         '
         Me.RadioButtonRandom.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButtonRandom.AutoSize = True
-        Me.RadioButtonRandom.Location = New System.Drawing.Point(1106, 291)
+        Me.RadioButtonRandom.Location = New System.Drawing.Point(1005, 291)
         Me.RadioButtonRandom.Name = "RadioButtonRandom"
-        Me.RadioButtonRandom.Size = New System.Drawing.Size(73, 20)
+        Me.RadioButtonRandom.Size = New System.Drawing.Size(174, 44)
         Me.RadioButtonRandom.TabIndex = 30
         Me.RadioButtonRandom.Text = "ランダム"
         Me.RadioButtonRandom.UseVisualStyleBackColor = True
@@ -523,10 +772,10 @@ Partial Class TorpCsvGenerator
         Me.CheckBoxUseInterval.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBoxUseInterval.AutoSize = True
         Me.CheckBoxUseInterval.Font = New System.Drawing.Font("MS UI Gothic", 12.0!)
-        Me.CheckBoxUseInterval.Location = New System.Drawing.Point(913, 341)
+        Me.CheckBoxUseInterval.Location = New System.Drawing.Point(644, 341)
         Me.CheckBoxUseInterval.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBoxUseInterval.Name = "CheckBoxUseInterval"
-        Me.CheckBoxUseInterval.Size = New System.Drawing.Size(186, 20)
+        Me.CheckBoxUseInterval.Size = New System.Drawing.Size(455, 44)
         Me.CheckBoxUseInterval.TabIndex = 31
         Me.CheckBoxUseInterval.Text = "パターン間に休止をはさむ"
         Me.CheckBoxUseInterval.UseVisualStyleBackColor = True
@@ -538,7 +787,7 @@ Partial Class TorpCsvGenerator
         Me.LabelMin.Location = New System.Drawing.Point(934, 373)
         Me.LabelMin.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelMin.Name = "LabelMin"
-        Me.LabelMin.Size = New System.Drawing.Size(71, 16)
+        Me.LabelMin.Size = New System.Drawing.Size(177, 40)
         Me.LabelMin.TabIndex = 33
         Me.LabelMin.Text = "最小時間"
         '
@@ -549,7 +798,7 @@ Partial Class TorpCsvGenerator
         Me.LabelMax.Location = New System.Drawing.Point(934, 416)
         Me.LabelMax.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelMax.Name = "LabelMax"
-        Me.LabelMax.Size = New System.Drawing.Size(71, 16)
+        Me.LabelMax.Size = New System.Drawing.Size(177, 40)
         Me.LabelMax.TabIndex = 34
         Me.LabelMax.Text = "最大時間"
         '
@@ -564,17 +813,18 @@ Partial Class TorpCsvGenerator
         Me.TextBoxLog.Name = "TextBoxLog"
         Me.TextBoxLog.ReadOnly = True
         Me.TextBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBoxLog.Size = New System.Drawing.Size(499, 173)
+        Me.TextBoxLog.Size = New System.Drawing.Size(499, 330)
         Me.TextBoxLog.TabIndex = 39
         '
         'MenuStrip
         '
         Me.MenuStrip.Font = New System.Drawing.Font("Yu Gothic UI", 12.0!)
+        Me.MenuStrip.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.MenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemFile, Me.ToolStripMenuItemEdit, Me.ToolStripMenuItemContentsPlay, Me.ToolStripMenuItemCsvGenerate})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(1426, 29)
+        Me.MenuStrip.Size = New System.Drawing.Size(1426, 62)
         Me.MenuStrip.TabIndex = 44
         Me.MenuStrip.Text = "MenuStrip1"
         '
@@ -582,197 +832,197 @@ Partial Class TorpCsvGenerator
         '
         Me.ToolStripMenuItemFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemOpen, Me.ToolStripMenuItemSave, Me.ToolStripMenuItemOverwriteSave, Me.ToolStripSeparator1, Me.TSVエクスポートToolStripMenuItem, Me.TSVインポートToolStripMenuItem, Me.ToolStripSeparator3, Me.ToolStripMenuItemClear, Me.ToolStripMenuItemEnd})
         Me.ToolStripMenuItemFile.Name = "ToolStripMenuItemFile"
-        Me.ToolStripMenuItemFile.Size = New System.Drawing.Size(67, 25)
+        Me.ToolStripMenuItemFile.Size = New System.Drawing.Size(159, 58)
         Me.ToolStripMenuItemFile.Text = "ファイル"
         '
         'ToolStripMenuItemOpen
         '
         Me.ToolStripMenuItemOpen.Name = "ToolStripMenuItemOpen"
-        Me.ToolStripMenuItemOpen.Size = New System.Drawing.Size(211, 26)
+        Me.ToolStripMenuItemOpen.Size = New System.Drawing.Size(518, 62)
         Me.ToolStripMenuItemOpen.Text = "開く"
         '
         'ToolStripMenuItemSave
         '
         Me.ToolStripMenuItemSave.Name = "ToolStripMenuItemSave"
-        Me.ToolStripMenuItemSave.Size = New System.Drawing.Size(211, 26)
+        Me.ToolStripMenuItemSave.Size = New System.Drawing.Size(518, 62)
         Me.ToolStripMenuItemSave.Text = "名前をつけて保存"
         '
         'ToolStripMenuItemOverwriteSave
         '
         Me.ToolStripMenuItemOverwriteSave.Name = "ToolStripMenuItemOverwriteSave"
         Me.ToolStripMenuItemOverwriteSave.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.ToolStripMenuItemOverwriteSave.Size = New System.Drawing.Size(211, 26)
+        Me.ToolStripMenuItemOverwriteSave.Size = New System.Drawing.Size(518, 62)
         Me.ToolStripMenuItemOverwriteSave.Text = "上書き保存"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(208, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(515, 6)
         '
         'TSVエクスポートToolStripMenuItem
         '
         Me.TSVエクスポートToolStripMenuItem.Name = "TSVエクスポートToolStripMenuItem"
-        Me.TSVエクスポートToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
+        Me.TSVエクスポートToolStripMenuItem.Size = New System.Drawing.Size(518, 62)
         Me.TSVエクスポートToolStripMenuItem.Text = "エクスポート(.tsv)"
         Me.TSVエクスポートToolStripMenuItem.ToolTipText = "タブ区切りファイルにエクスポートします。"
         '
         'TSVインポートToolStripMenuItem
         '
         Me.TSVインポートToolStripMenuItem.Name = "TSVインポートToolStripMenuItem"
-        Me.TSVインポートToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
+        Me.TSVインポートToolStripMenuItem.Size = New System.Drawing.Size(518, 62)
         Me.TSVインポートToolStripMenuItem.Text = "インポート(.tsv)"
         Me.TSVインポートToolStripMenuItem.ToolTipText = "タブ区切りファイルをインポートします。"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(208, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(515, 6)
         '
         'ToolStripMenuItemClear
         '
         Me.ToolStripMenuItemClear.Name = "ToolStripMenuItemClear"
-        Me.ToolStripMenuItemClear.Size = New System.Drawing.Size(211, 26)
+        Me.ToolStripMenuItemClear.Size = New System.Drawing.Size(518, 62)
         Me.ToolStripMenuItemClear.Text = "クリア"
         '
         'ToolStripMenuItemEnd
         '
         Me.ToolStripMenuItemEnd.Name = "ToolStripMenuItemEnd"
-        Me.ToolStripMenuItemEnd.Size = New System.Drawing.Size(211, 26)
+        Me.ToolStripMenuItemEnd.Size = New System.Drawing.Size(518, 62)
         Me.ToolStripMenuItemEnd.Text = "終了"
         '
         'ToolStripMenuItemEdit
         '
         Me.ToolStripMenuItemEdit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemAddRow, Me.ToolStripMenuItemDeleteRow, Me.一括編集ToolStripMenuItem, Me.ToolStripSeparator2, Me.ToolStripMenuItemDelay, Me.全体を01秒進めるToolStripMenuItem, Me.全体を01秒遅らせるToolStripMenuItem, Me.ToolStripSeparator4, Me.コンテンツ再生速度ToolStripMenuItem, Me.back5sToolStripMenuItem, Me.skip5sToolStripMenuItem})
         Me.ToolStripMenuItemEdit.Name = "ToolStripMenuItemEdit"
-        Me.ToolStripMenuItemEdit.Size = New System.Drawing.Size(54, 25)
+        Me.ToolStripMenuItemEdit.Size = New System.Drawing.Size(127, 58)
         Me.ToolStripMenuItemEdit.Text = "編集"
         '
         'ToolStripMenuItemAddRow
         '
         Me.ToolStripMenuItemAddRow.Name = "ToolStripMenuItemAddRow"
         Me.ToolStripMenuItemAddRow.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.ToolStripMenuItemAddRow.Size = New System.Drawing.Size(272, 26)
+        Me.ToolStripMenuItemAddRow.Size = New System.Drawing.Size(672, 62)
         Me.ToolStripMenuItemAddRow.Text = "行追加"
         '
         'ToolStripMenuItemDeleteRow
         '
         Me.ToolStripMenuItemDeleteRow.Name = "ToolStripMenuItemDeleteRow"
-        Me.ToolStripMenuItemDeleteRow.Size = New System.Drawing.Size(272, 26)
+        Me.ToolStripMenuItemDeleteRow.Size = New System.Drawing.Size(672, 62)
         Me.ToolStripMenuItemDeleteRow.Text = "行削除(Delete)"
         '
         '一括編集ToolStripMenuItem
         '
         Me.一括編集ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.末尾に100行追加ToolStripMenuItem, Me.末尾に100行追加パターンありToolStripMenuItem})
         Me.一括編集ToolStripMenuItem.Name = "一括編集ToolStripMenuItem"
-        Me.一括編集ToolStripMenuItem.Size = New System.Drawing.Size(272, 26)
+        Me.一括編集ToolStripMenuItem.Size = New System.Drawing.Size(672, 62)
         Me.一括編集ToolStripMenuItem.Text = "一括編集"
         '
         '末尾に100行追加ToolStripMenuItem
         '
         Me.末尾に100行追加ToolStripMenuItem.Name = "末尾に100行追加ToolStripMenuItem"
-        Me.末尾に100行追加ToolStripMenuItem.Size = New System.Drawing.Size(286, 26)
+        Me.末尾に100行追加ToolStripMenuItem.Size = New System.Drawing.Size(709, 62)
         Me.末尾に100行追加ToolStripMenuItem.Text = "末尾に100行追加"
         '
         '末尾に100行追加パターンありToolStripMenuItem
         '
         Me.末尾に100行追加パターンありToolStripMenuItem.Name = "末尾に100行追加パターンありToolStripMenuItem"
-        Me.末尾に100行追加パターンありToolStripMenuItem.Size = New System.Drawing.Size(286, 26)
+        Me.末尾に100行追加パターンありToolStripMenuItem.Size = New System.Drawing.Size(709, 62)
         Me.末尾に100行追加パターンありToolStripMenuItem.Text = "末尾に100行追加　パターンあり"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(269, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(669, 6)
         '
         'ToolStripMenuItemDelay
         '
         Me.ToolStripMenuItemDelay.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem_plus5s, Me.ToolStripMenuItem_plus4s, Me.ToolStripMenuItem_plus3s, Me.ToolStripMenuItem_plus2s, Me.ToolStripMenuItem_plus1s, Me.ToolStripMenuItem_plus0s, Me.ToolStripMenuItem_minus1s, Me.ToolStripMenuItem_minus2s, Me.ToolStripMenuItem_minus3s, Me.ToolStripMenuItem_minus4s, Me.ToolStripMenuItem_minus5s})
         Me.ToolStripMenuItemDelay.Name = "ToolStripMenuItemDelay"
-        Me.ToolStripMenuItemDelay.Size = New System.Drawing.Size(272, 26)
+        Me.ToolStripMenuItemDelay.Size = New System.Drawing.Size(672, 62)
         Me.ToolStripMenuItemDelay.Text = "時間キャプチャ　ディレイ設定"
         '
         'ToolStripMenuItem_plus5s
         '
         Me.ToolStripMenuItem_plus5s.CheckOnClick = True
         Me.ToolStripMenuItem_plus5s.Name = "ToolStripMenuItem_plus5s"
-        Me.ToolStripMenuItem_plus5s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_plus5s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_plus5s.Text = "+0.5s"
         '
         'ToolStripMenuItem_plus4s
         '
         Me.ToolStripMenuItem_plus4s.CheckOnClick = True
         Me.ToolStripMenuItem_plus4s.Name = "ToolStripMenuItem_plus4s"
-        Me.ToolStripMenuItem_plus4s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_plus4s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_plus4s.Text = "+0.4s"
         '
         'ToolStripMenuItem_plus3s
         '
         Me.ToolStripMenuItem_plus3s.CheckOnClick = True
         Me.ToolStripMenuItem_plus3s.Name = "ToolStripMenuItem_plus3s"
-        Me.ToolStripMenuItem_plus3s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_plus3s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_plus3s.Text = "+0.3s"
         '
         'ToolStripMenuItem_plus2s
         '
         Me.ToolStripMenuItem_plus2s.CheckOnClick = True
         Me.ToolStripMenuItem_plus2s.Name = "ToolStripMenuItem_plus2s"
-        Me.ToolStripMenuItem_plus2s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_plus2s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_plus2s.Text = "+0.2s"
         '
         'ToolStripMenuItem_plus1s
         '
         Me.ToolStripMenuItem_plus1s.CheckOnClick = True
         Me.ToolStripMenuItem_plus1s.Name = "ToolStripMenuItem_plus1s"
-        Me.ToolStripMenuItem_plus1s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_plus1s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_plus1s.Text = "+0.1s"
         '
         'ToolStripMenuItem_plus0s
         '
         Me.ToolStripMenuItem_plus0s.CheckOnClick = True
         Me.ToolStripMenuItem_plus0s.Name = "ToolStripMenuItem_plus0s"
-        Me.ToolStripMenuItem_plus0s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_plus0s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_plus0s.Text = "±0s"
         '
         'ToolStripMenuItem_minus1s
         '
         Me.ToolStripMenuItem_minus1s.CheckOnClick = True
         Me.ToolStripMenuItem_minus1s.Name = "ToolStripMenuItem_minus1s"
-        Me.ToolStripMenuItem_minus1s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_minus1s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_minus1s.Text = "-0.1s"
         '
         'ToolStripMenuItem_minus2s
         '
         Me.ToolStripMenuItem_minus2s.CheckOnClick = True
         Me.ToolStripMenuItem_minus2s.Name = "ToolStripMenuItem_minus2s"
-        Me.ToolStripMenuItem_minus2s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_minus2s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_minus2s.Text = "-0.2s"
         '
         'ToolStripMenuItem_minus3s
         '
         Me.ToolStripMenuItem_minus3s.CheckOnClick = True
         Me.ToolStripMenuItem_minus3s.Name = "ToolStripMenuItem_minus3s"
-        Me.ToolStripMenuItem_minus3s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_minus3s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_minus3s.Text = "-0.3s"
         '
         'ToolStripMenuItem_minus4s
         '
         Me.ToolStripMenuItem_minus4s.CheckOnClick = True
         Me.ToolStripMenuItem_minus4s.Name = "ToolStripMenuItem_minus4s"
-        Me.ToolStripMenuItem_minus4s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_minus4s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_minus4s.Text = "-0.4s"
         '
         'ToolStripMenuItem_minus5s
         '
         Me.ToolStripMenuItem_minus5s.CheckOnClick = True
         Me.ToolStripMenuItem_minus5s.Name = "ToolStripMenuItem_minus5s"
-        Me.ToolStripMenuItem_minus5s.Size = New System.Drawing.Size(119, 26)
+        Me.ToolStripMenuItem_minus5s.Size = New System.Drawing.Size(291, 62)
         Me.ToolStripMenuItem_minus5s.Text = "-0.5s"
         '
         '全体を01秒進めるToolStripMenuItem
         '
         Me.全体を01秒進めるToolStripMenuItem.Name = "全体を01秒進めるToolStripMenuItem"
         Me.全体を01秒進めるToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.全体を01秒進めるToolStripMenuItem.Size = New System.Drawing.Size(272, 26)
+        Me.全体を01秒進めるToolStripMenuItem.Size = New System.Drawing.Size(672, 62)
         Me.全体を01秒進めるToolStripMenuItem.Text = "全体を0.1秒遅らせる"
         Me.全体を01秒進めるToolStripMenuItem.ToolTipText = "時間を全体的に0.1秒遅らせます。"
         '
@@ -780,63 +1030,63 @@ Partial Class TorpCsvGenerator
         '
         Me.全体を01秒遅らせるToolStripMenuItem.Name = "全体を01秒遅らせるToolStripMenuItem"
         Me.全体を01秒遅らせるToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.全体を01秒遅らせるToolStripMenuItem.Size = New System.Drawing.Size(272, 26)
+        Me.全体を01秒遅らせるToolStripMenuItem.Size = New System.Drawing.Size(672, 62)
         Me.全体を01秒遅らせるToolStripMenuItem.Text = "全体を0.1秒早める"
         Me.全体を01秒遅らせるToolStripMenuItem.ToolTipText = "時間を全体的に0.1秒早めます。"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(269, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(669, 6)
         '
         'コンテンツ再生速度ToolStripMenuItem
         '
         Me.コンテンツ再生速度ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.X050ToolStripMenuItem, Me.X075ToolStripMenuItem, Me.X100ToolStripMenuItem, Me.X125ToolStripMenuItem, Me.X150ToolStripMenuItem, Me.X200ToolStripMenuItem})
         Me.コンテンツ再生速度ToolStripMenuItem.Enabled = False
         Me.コンテンツ再生速度ToolStripMenuItem.Name = "コンテンツ再生速度ToolStripMenuItem"
-        Me.コンテンツ再生速度ToolStripMenuItem.Size = New System.Drawing.Size(272, 26)
+        Me.コンテンツ再生速度ToolStripMenuItem.Size = New System.Drawing.Size(672, 62)
         Me.コンテンツ再生速度ToolStripMenuItem.Text = "コンテンツ再生速度"
         '
         'X050ToolStripMenuItem
         '
         Me.X050ToolStripMenuItem.Enabled = False
         Me.X050ToolStripMenuItem.Name = "X050ToolStripMenuItem"
-        Me.X050ToolStripMenuItem.Size = New System.Drawing.Size(117, 26)
+        Me.X050ToolStripMenuItem.Size = New System.Drawing.Size(287, 62)
         Me.X050ToolStripMenuItem.Text = "0.5x"
         '
         'X075ToolStripMenuItem
         '
         Me.X075ToolStripMenuItem.Enabled = False
         Me.X075ToolStripMenuItem.Name = "X075ToolStripMenuItem"
-        Me.X075ToolStripMenuItem.Size = New System.Drawing.Size(117, 26)
+        Me.X075ToolStripMenuItem.Size = New System.Drawing.Size(287, 62)
         Me.X075ToolStripMenuItem.Text = "0.75x"
         '
         'X100ToolStripMenuItem
         '
         Me.X100ToolStripMenuItem.Enabled = False
         Me.X100ToolStripMenuItem.Name = "X100ToolStripMenuItem"
-        Me.X100ToolStripMenuItem.Size = New System.Drawing.Size(117, 26)
+        Me.X100ToolStripMenuItem.Size = New System.Drawing.Size(287, 62)
         Me.X100ToolStripMenuItem.Text = "1.0x"
         '
         'X125ToolStripMenuItem
         '
         Me.X125ToolStripMenuItem.Enabled = False
         Me.X125ToolStripMenuItem.Name = "X125ToolStripMenuItem"
-        Me.X125ToolStripMenuItem.Size = New System.Drawing.Size(117, 26)
+        Me.X125ToolStripMenuItem.Size = New System.Drawing.Size(287, 62)
         Me.X125ToolStripMenuItem.Text = "1.25x"
         '
         'X150ToolStripMenuItem
         '
         Me.X150ToolStripMenuItem.Enabled = False
         Me.X150ToolStripMenuItem.Name = "X150ToolStripMenuItem"
-        Me.X150ToolStripMenuItem.Size = New System.Drawing.Size(117, 26)
+        Me.X150ToolStripMenuItem.Size = New System.Drawing.Size(287, 62)
         Me.X150ToolStripMenuItem.Text = "1.5x"
         '
         'X200ToolStripMenuItem
         '
         Me.X200ToolStripMenuItem.Enabled = False
         Me.X200ToolStripMenuItem.Name = "X200ToolStripMenuItem"
-        Me.X200ToolStripMenuItem.Size = New System.Drawing.Size(117, 26)
+        Me.X200ToolStripMenuItem.Size = New System.Drawing.Size(287, 62)
         Me.X200ToolStripMenuItem.Text = "2.0x"
         '
         'back5sToolStripMenuItem
@@ -844,7 +1094,7 @@ Partial Class TorpCsvGenerator
         Me.back5sToolStripMenuItem.Enabled = False
         Me.back5sToolStripMenuItem.Name = "back5sToolStripMenuItem"
         Me.back5sToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.back5sToolStripMenuItem.Size = New System.Drawing.Size(272, 26)
+        Me.back5sToolStripMenuItem.Size = New System.Drawing.Size(672, 62)
         Me.back5sToolStripMenuItem.Text = "5秒戻る"
         '
         'skip5sToolStripMenuItem
@@ -852,19 +1102,19 @@ Partial Class TorpCsvGenerator
         Me.skip5sToolStripMenuItem.Enabled = False
         Me.skip5sToolStripMenuItem.Name = "skip5sToolStripMenuItem"
         Me.skip5sToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
-        Me.skip5sToolStripMenuItem.Size = New System.Drawing.Size(272, 26)
+        Me.skip5sToolStripMenuItem.Size = New System.Drawing.Size(672, 62)
         Me.skip5sToolStripMenuItem.Text = "5秒スキップ"
         '
         'ToolStripMenuItemContentsPlay
         '
         Me.ToolStripMenuItemContentsPlay.Name = "ToolStripMenuItemContentsPlay"
-        Me.ToolStripMenuItemContentsPlay.Size = New System.Drawing.Size(113, 25)
+        Me.ToolStripMenuItemContentsPlay.Size = New System.Drawing.Size(275, 58)
         Me.ToolStripMenuItemContentsPlay.Text = "コンテンツ再生"
         '
         'ToolStripMenuItemCsvGenerate
         '
         Me.ToolStripMenuItemCsvGenerate.Name = "ToolStripMenuItemCsvGenerate"
-        Me.ToolStripMenuItemCsvGenerate.Size = New System.Drawing.Size(83, 25)
+        Me.ToolStripMenuItemCsvGenerate.Size = New System.Drawing.Size(198, 58)
         Me.ToolStripMenuItemCsvGenerate.Text = "CSV出力"
         '
         'ButtonTimeCapture
@@ -873,7 +1123,7 @@ Partial Class TorpCsvGenerator
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonTimeCapture.Enabled = False
         Me.ButtonTimeCapture.Font = New System.Drawing.Font("MS UI Gothic", 12.0!)
-        Me.ButtonTimeCapture.Location = New System.Drawing.Point(13, 598)
+        Me.ButtonTimeCapture.Location = New System.Drawing.Point(13, 755)
         Me.ButtonTimeCapture.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonTimeCapture.Name = "ButtonTimeCapture"
         Me.ButtonTimeCapture.Size = New System.Drawing.Size(880, 50)
@@ -888,7 +1138,7 @@ Partial Class TorpCsvGenerator
         Me.LabelLog.Location = New System.Drawing.Point(915, 456)
         Me.LabelLog.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelLog.Name = "LabelLog"
-        Me.LabelLog.Size = New System.Drawing.Size(39, 16)
+        Me.LabelLog.Size = New System.Drawing.Size(97, 40)
         Me.LabelLog.TabIndex = 46
         Me.LabelLog.Text = "情報"
         '
@@ -899,7 +1149,7 @@ Partial Class TorpCsvGenerator
         Me.TrackBarItvMinTime.Margin = New System.Windows.Forms.Padding(4)
         Me.TrackBarItvMinTime.Maximum = 20
         Me.TrackBarItvMinTime.Name = "TrackBarItvMinTime"
-        Me.TrackBarItvMinTime.Size = New System.Drawing.Size(332, 45)
+        Me.TrackBarItvMinTime.Size = New System.Drawing.Size(332, 114)
         Me.TrackBarItvMinTime.TabIndex = 47
         Me.TrackBarItvMinTime.Value = 4
         '
@@ -910,7 +1160,7 @@ Partial Class TorpCsvGenerator
         Me.TrackBarItvMaxTime.Margin = New System.Windows.Forms.Padding(4)
         Me.TrackBarItvMaxTime.Maximum = 20
         Me.TrackBarItvMaxTime.Name = "TrackBarItvMaxTime"
-        Me.TrackBarItvMaxTime.Size = New System.Drawing.Size(332, 45)
+        Me.TrackBarItvMaxTime.Size = New System.Drawing.Size(332, 114)
         Me.TrackBarItvMaxTime.TabIndex = 48
         Me.TrackBarItvMaxTime.Value = 4
         '
@@ -921,7 +1171,7 @@ Partial Class TorpCsvGenerator
         Me.LabelMinTime.Location = New System.Drawing.Point(1022, 373)
         Me.LabelMinTime.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelMinTime.Name = "LabelMinTime"
-        Me.LabelMinTime.Size = New System.Drawing.Size(30, 16)
+        Me.LabelMinTime.Size = New System.Drawing.Size(74, 40)
         Me.LabelMinTime.TabIndex = 49
         Me.LabelMinTime.Text = "min"
         Me.LabelMinTime.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -933,7 +1183,7 @@ Partial Class TorpCsvGenerator
         Me.LabelMaxTime.Location = New System.Drawing.Point(1022, 416)
         Me.LabelMaxTime.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelMaxTime.Name = "LabelMaxTime"
-        Me.LabelMaxTime.Size = New System.Drawing.Size(34, 16)
+        Me.LabelMaxTime.Size = New System.Drawing.Size(83, 40)
         Me.LabelMaxTime.TabIndex = 50
         Me.LabelMaxTime.Text = "max"
         Me.LabelMaxTime.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -945,7 +1195,7 @@ Partial Class TorpCsvGenerator
         Me.LabelSec1.Location = New System.Drawing.Point(1049, 373)
         Me.LabelSec1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelSec1.Name = "LabelSec1"
-        Me.LabelSec1.Size = New System.Drawing.Size(23, 16)
+        Me.LabelSec1.Size = New System.Drawing.Size(57, 40)
         Me.LabelSec1.TabIndex = 51
         Me.LabelSec1.Text = "秒"
         Me.LabelSec1.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -957,240 +1207,32 @@ Partial Class TorpCsvGenerator
         Me.LabelSec2.Location = New System.Drawing.Point(1049, 416)
         Me.LabelSec2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelSec2.Name = "LabelSec2"
-        Me.LabelSec2.Size = New System.Drawing.Size(23, 16)
+        Me.LabelSec2.Size = New System.Drawing.Size(57, 40)
         Me.LabelSec2.TabIndex = 52
         Me.LabelSec2.Text = "秒"
         Me.LabelSec2.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
-        'vtimehms
+        'OxyPlotView
         '
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS UI Gothic", 9.0!)
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        Me.vtimehms.DefaultCellStyle = DataGridViewCellStyle1
-        Me.vtimehms.Frozen = True
-        Me.vtimehms.HeaderText = ""
-        Me.vtimehms.Name = "vtimehms"
-        Me.vtimehms.ReadOnly = True
-        Me.vtimehms.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.vtimehms.Width = 60
+        Me.OxyPlotView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.OxyPlotView.Location = New System.Drawing.Point(13, 812)
+        Me.OxyPlotView.Name = "OxyPlotView"
+        Me.OxyPlotView.PanCursor = System.Windows.Forms.Cursors.Hand
+        Me.OxyPlotView.Size = New System.Drawing.Size(1401, 220)
+        Me.OxyPlotView.TabIndex = 53
+        Me.OxyPlotView.Text = "PlotView1"
+        Me.OxyPlotView.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE
+        Me.OxyPlotView.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE
+        Me.OxyPlotView.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS
         '
-        'vtime
-        '
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.vtime.DefaultCellStyle = DataGridViewCellStyle2
-        Me.vtime.Frozen = True
-        Me.vtime.HeaderText = "時間"
-        Me.vtime.MaxInputLength = 6
-        Me.vtime.Name = "vtime"
-        Me.vtime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.vtime.ToolTipText = "時間 [10=1秒]"
-        Me.vtime.Width = 65
-        '
-        'vtimediff
-        '
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        Me.vtimediff.DefaultCellStyle = DataGridViewCellStyle3
-        Me.vtimediff.Frozen = True
-        Me.vtimediff.HeaderText = "動作時間"
-        Me.vtimediff.Name = "vtimediff"
-        Me.vtimediff.ReadOnly = True
-        Me.vtimediff.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.vtimediff.ToolTipText = "差[10=1秒]"
-        Me.vtimediff.Width = 80
-        '
-        'vdir
-        '
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.vdir.DefaultCellStyle = DataGridViewCellStyle4
-        Me.vdir.Frozen = True
-        Me.vdir.HeaderText = "方向"
-        Me.vdir.MaxInputLength = 1
-        Me.vdir.Name = "vdir"
-        Me.vdir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.vdir.ToolTipText = "回転方向 [0=右回転, 1=左回転]"
-        Me.vdir.Width = 65
-        '
-        'vspd
-        '
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("ＭＳ ゴシック", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.vspd.DefaultCellStyle = DataGridViewCellStyle5
-        Me.vspd.Frozen = True
-        Me.vspd.HeaderText = "速度"
-        Me.vspd.MaxInputLength = 3
-        Me.vspd.Name = "vspd"
-        Me.vspd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.vspd.ToolTipText = "回転速度 [推奨値・・・A10サイクロンSA：40以上　U.F.O.SA：25以上]"
-        Me.vspd.Width = 65
-        '
-        'check
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("MS UI Gothic", 9.0!)
-        DataGridViewCellStyle6.NullValue = False
-        Me.check.DefaultCellStyle = DataGridViewCellStyle6
-        Me.check.Frozen = True
-        Me.check.HeaderText = "パターン"
-        Me.check.Name = "check"
-        Me.check.Width = 65
-        '
-        'patn1
-        '
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.patn1.DefaultCellStyle = DataGridViewCellStyle7
-        Me.patn1.HeaderText = "パターン1"
-        Me.patn1.MaxInputLength = 100
-        Me.patn1.Name = "patn1"
-        Me.patn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.patn1.Width = 80
-        '
-        'patn2
-        '
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.patn2.DefaultCellStyle = DataGridViewCellStyle8
-        Me.patn2.HeaderText = "パターン2"
-        Me.patn2.MaxInputLength = 100
-        Me.patn2.Name = "patn2"
-        Me.patn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.patn2.Width = 80
-        '
-        'patn3
-        '
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.patn3.DefaultCellStyle = DataGridViewCellStyle9
-        Me.patn3.HeaderText = "パターン3"
-        Me.patn3.MaxInputLength = 100
-        Me.patn3.Name = "patn3"
-        Me.patn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.patn3.Width = 80
-        '
-        'patn4
-        '
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.patn4.DefaultCellStyle = DataGridViewCellStyle10
-        Me.patn4.HeaderText = "パターン4"
-        Me.patn4.MaxInputLength = 100
-        Me.patn4.Name = "patn4"
-        Me.patn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.patn4.Width = 80
-        '
-        'vcmt
-        '
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(236, Byte), Integer))
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.vcmt.DefaultCellStyle = DataGridViewCellStyle11
-        Me.vcmt.HeaderText = "コメント"
-        Me.vcmt.MaxInputLength = 100
-        Me.vcmt.Name = "vcmt"
-        Me.vcmt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.vcmt.Width = 285
-        '
-        'dspd1
-        '
-        Me.dspd1.HeaderText = "dspd1"
-        Me.dspd1.MaxInputLength = 3
-        Me.dspd1.Name = "dspd1"
-        Me.dspd1.Visible = False
-        Me.dspd1.Width = 20
-        '
-        'dspd2
-        '
-        Me.dspd2.HeaderText = "dspd2"
-        Me.dspd2.MaxInputLength = 3
-        Me.dspd2.Name = "dspd2"
-        Me.dspd2.Visible = False
-        Me.dspd2.Width = 20
-        '
-        'dspd3
-        '
-        Me.dspd3.HeaderText = "dspd3"
-        Me.dspd3.MaxInputLength = 3
-        Me.dspd3.Name = "dspd3"
-        Me.dspd3.Visible = False
-        Me.dspd3.Width = 20
-        '
-        'dspd4
-        '
-        Me.dspd4.HeaderText = "dspd4"
-        Me.dspd4.MaxInputLength = 3
-        Me.dspd4.Name = "dspd4"
-        Me.dspd4.Visible = False
-        Me.dspd4.Width = 20
-        '
-        'rate1
-        '
-        Me.rate1.HeaderText = "rate1"
-        Me.rate1.MaxInputLength = 1
-        Me.rate1.Name = "rate1"
-        Me.rate1.Visible = False
-        Me.rate1.Width = 20
-        '
-        'rate2
-        '
-        Me.rate2.HeaderText = "rate2"
-        Me.rate2.MaxInputLength = 1
-        Me.rate2.Name = "rate2"
-        Me.rate2.Visible = False
-        Me.rate2.Width = 20
-        '
-        'rate3
-        '
-        Me.rate3.HeaderText = "rate3"
-        Me.rate3.MaxInputLength = 1
-        Me.rate3.Name = "rate3"
-        Me.rate3.Visible = False
-        Me.rate3.Width = 20
-        '
-        'rate4
-        '
-        Me.rate4.HeaderText = "rate4"
-        Me.rate4.MaxInputLength = 1
-        Me.rate4.Name = "rate4"
-        Me.rate4.Visible = False
-        Me.rate4.Width = 20
-        '
-        'userdm
-        '
-        Me.userdm.HeaderText = "userdm"
-        Me.userdm.Name = "userdm"
-        Me.userdm.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.userdm.Visible = False
-        Me.userdm.Width = 20
-        '
-        'useitv
-        '
-        Me.useitv.HeaderText = "useitv"
-        Me.useitv.Name = "useitv"
-        Me.useitv.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.useitv.Visible = False
-        Me.useitv.Width = 20
-        '
-        'itvmin
-        '
-        Me.itvmin.HeaderText = "itvmin"
-        Me.itvmin.MaxInputLength = 4
-        Me.itvmin.Name = "itvmin"
-        Me.itvmin.Visible = False
-        Me.itvmin.Width = 20
-        '
-        'itvmax
-        '
-        Me.itvmax.HeaderText = "itvmax"
-        Me.itvmax.MaxInputLength = 4
-        Me.itvmax.Name = "itvmax"
-        Me.itvmax.Visible = False
-        Me.itvmax.Width = 20
-        '
-        'TorpCsvGenerator
+        'Scry1CsvGenerator
         '
         Me.AllowDrop = True
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(21.0!, 40.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1426, 661)
+        Me.ClientSize = New System.Drawing.Size(1426, 1044)
+        Me.Controls.Add(Me.OxyPlotView)
         Me.Controls.Add(Me.LabelSec2)
         Me.Controls.Add(Me.LabelSec1)
         Me.Controls.Add(Me.LabelMaxTime)
@@ -1238,8 +1280,8 @@ Partial Class TorpCsvGenerator
         Me.Font = New System.Drawing.Font("MS UI Gothic", 12.0!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip
-        Me.Name = "TorpCsvGenerator"
-        Me.Text = "TorpCsvGenerator"
+        Me.Name = "Scry1CsvGenerator"
+        Me.Text = "Scry1CsvGenerator"
         CType(Me.DataGridViewTimesheet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TrackBarPattern1dspd, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TrackBarPattern1rate, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1368,4 +1410,5 @@ Partial Class TorpCsvGenerator
     Friend WithEvents useitv As DataGridViewCheckBoxColumn
     Friend WithEvents itvmin As DataGridViewTextBoxColumn
     Friend WithEvents itvmax As DataGridViewTextBoxColumn
+    Friend WithEvents OxyPlotView As OxyPlot.WindowsForms.PlotView
 End Class
