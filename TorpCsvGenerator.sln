@@ -5,6 +5,13 @@ VisualStudioVersion = 18.4.11626.88 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Scry1CsvGenerator", "TorpCsvGenerator\Scry1CsvGenerator.vbproj", "{58DE18E8-93CB-4DDF-823C-876E62FE130D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{2705648B-91C9-411F-9B31-A78FF0391C30}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+		ThirdPartyNotices.txt = ThirdPartyNotices.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +25,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9782A9C-CF08-4452-915E-214C65933BF0}
 	EndGlobalSection
 EndGlobal
