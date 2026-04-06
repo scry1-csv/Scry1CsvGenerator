@@ -1480,8 +1480,8 @@ Public Class Scry1CsvGenerator
 
 
             Return result
-        Catch ex As OutOfMemoryException
-            TextBoxLog.Text = "TimeSheetRowsの生成に失敗しました。"
+        Catch ex As Exception
+            Debug.WriteLine("TimeSheetRowsの生成に失敗しました。")
             Return Nothing
         End Try
 
